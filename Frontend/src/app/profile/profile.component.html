@@ -1,0 +1,83 @@
+<!-- <div class="row" *ngIf="user">
+    <div class="col-xl-3 col-md-2">
+
+    </div>
+    <div class="col-xl-6 col-md-8">
+        <div class="text-center">
+            <img src="http://localhost:3000/auth/image/{{user.image}}" class="profileImage">
+
+        </div>
+        <div class="text-center">
+            <label class="upload btn btn-primary" for="couverture" >Changer Votre Photo<i class="bi bi-cloud-arrow-up ms-1 fs-6"></i></label>
+            <input class="fileinput" type="file" id="couverture" name="couverture" accept="image/png, image/jpeg">
+        </div>
+    </div>
+    <div class="text-center fs-4">
+        Lassad Maghrebi
+    </div>
+</div> -->
+<!-- <div class="row" *ngIf="user">
+    <div class="col-xl-6 col-md-8 p-4  ">
+        <div class="text-center bg-secondary">
+            <div class="text-center fs-4 mb-2">
+                Lassad Maghrebi
+            </div>
+            <img src="http://localhost:3000/auth/image/{{user.image}}" class="profileImage">
+            <div class="text-center mt-2">
+                <label class="upload btn btn-light" for="couverture" >Changer Votre Photo<i class="bi bi-cloud-arrow-up ms-1 fs-6"></i></label>
+                <input class="fileinput" type="file" id="couverture" name="couverture" accept="image/png, image/jpeg">
+            </div>
+            <div class="text-center mt-2">
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-6 col-md-8 p-4 bg-secondary">
+        <div class="text-center ">
+            <div class="text-center fs-4 mb-2">
+                Changer le mot de passe
+            </div>
+            <input type="password"  placeholder="Password" class="form-control form-control-lg my-2" >
+            <input type="password"  placeholder="New Password" class="form-control form-control-lg my-2" >
+            <div class="text-center mt-2">
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+
+
+</div> -->
+
+<div class="row mt-4">
+    <div class="text-center py-2 col-md-6 mb-2">
+        <img *ngIf="user" src="http://localhost:3000/auth/image/{{user.image}}" class="card-img-top" alt="...">
+        <div class="text-center mt-2">
+            <label class="upload btn btn-light" for="couverture" >Changer Votre Photo<i class="bi bi-cloud-arrow-up ms-1 fs-6"></i></label>
+            <input class="fileinput" type="file" id="couverture" (change)="change($event)" name="couverture" accept="image/png, image/jpeg">
+        </div>
+        <div class="card-body text-center">
+            <button class="btn btn-primary" (click)="save()">Enregistrer</button>
+        </div>
+    </div>
+    <div class="text-center col-md-6 mb-2">
+        <form class="card-body text-center" [formGroup]="changeForm">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label text-light">Mot de passe</label>
+                <input type="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && changeForm.controls['password'].errors }" formControlName="password">
+                <div *ngIf="submitted && changeForm.controls['password'].errors" class="invalid-feedback">
+                    <div *ngIf="changeForm.controls['password'].errors['required']">Password is required</div>
+                    <div *ngIf="changeForm.controls['password'].errors['minlength']">Password must be at least 6 characters</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label text-light">Nouveau mot de passe</label>
+                <input type="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && changeForm.controls['password'].errors }" formControlName="newPassword">
+                <div *ngIf="submitted && changeForm.controls['newPassword'].errors" class="invalid-feedback">
+                    <div *ngIf="changeForm.controls['newPassword'].errors['required']">Password is required</div>
+                    <div *ngIf="changeForm.controls['newPassword'].errors['minlength']">Password must be at least 6 characters</div>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit" (click)="updatePassword()">Enregistrer</button>
+        </form>
+    </div>
+</div>

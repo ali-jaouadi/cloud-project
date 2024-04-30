@@ -1,0 +1,14 @@
+version: '3.8' # specify docker-compose version
+
+services:
+
+  frontend-service:
+    container_name: frontend-service
+    build:
+      context: "."
+      dockerfile: "./Dockerfile"
+    ports:
+      - 4200:4200
+    restart: always
+    volumes:
+      - ./frontend-service:/app

@@ -1,0 +1,204 @@
+<div class="text-center m-5">
+    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i class="bi bi-plus-circle-fill fs-5 px-2"><strong class="ms-2">Ajouter un stade</strong></i>
+    </button>
+</div>
+<div *ngIf="loading">
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-4 placeholder-glow">
+                <div style="width: 100%;height: 100%;" class="img-fluid placeholder rounded-start"></div>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title placeholder-glow">
+                        <span class="placeholder col-3 me-3"></span>
+                        <span class="placeholder col-3"></span>
+                    </h5>
+                    <p class="card-text placeholder-glow">
+                        <span class="placeholder col-2 me-2"></span>
+                        <span class="placeholder col-3"></span>
+                    </p>
+                    <p class="card-text placeholder-glow">
+                        <span class="placeholder col-2 me-2"></span>
+                        <span class="placeholder col-3"></span>
+                    </p>
+                    <p class="card-text placeholder-glow">
+                        <span class="placeholder col-2 me-2"></span>
+                        <span class="placeholder col-1"></span>
+                    </p>
+                    <p class="card-text placeholder-glow">
+                        <span class="placeholder col-2 me-2"></span>
+                        <span class="placeholder col-4"></span>
+                    </p>
+                    <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-2"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="!loading">
+    <div class="card mb-3" *ngFor="let s of stades">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="http://localhost:3000/auth/image/{{s.images[0]}}" style="width: 100%;height: 250px;"
+                    class=" rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body fs-4 d-flex flex-column pt-0">
+                    
+                    <h5 class="card-title fs-4 my-2">
+                        Nom : {{s.nom}}
+                        <span class="badge bg-success fs-6 float-end" *ngIf="s.verifier" >
+                            <i class="bi bi-check-circle-fill"></i> 
+                        </span>
+                        <span class="badge bg-danger fs-6 float-end" *ngIf="!s.verifier" >
+                            <i class="bi bi-hourglass-top"></i>
+                        </span>
+                    </h5>
+                    <p class="card-text my-2">Ville : {{s.adresse.ville}}</p>
+                    <p class="card-text my-2">Rue : {{s.adresse.rue}} </p>
+                    <p class="card-text my-2">Capacite : {{s.capacite}} </p>
+                    <div class="card-text d-flex my-2">Evaluation :
+                        <div class="ms-2" *ngFor="let i of [1,2,3,4,5]">
+                            <div *ngIf="i<=rating">
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <div *ngIf="i>rating">
+                                <i class="bi bi-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary mb-2 ms-2" (click)="RemplirModel(s)" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal1">
+                    Modifier Stade
+                </button>
+                <button *ngIf="s.etat" type="button" class="btn btn-success mb-2 ms-2" (click)="desactiverStade(s._id)" >
+                    Desactiver Stade
+                </button>
+                <button *ngIf="!s.etat" type="button" class="btn btn-danger mb-2 ms-2" (click)="activerStade(s._id)" >
+                    activer Stade
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Ajout -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ajoute Stade</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="container" [formGroup]="StadeForm">
+                    <div class="mb-3">
+                        <label class="form-label">Nom de Stade</label>
+                        <input type="text" class="form-control" formControlName="nom" placeholder="Nom">
+                    </div>
+                    <div class="form-control">
+                        <div class="text-center">Adresse</div>
+                        <div class="mb-3">
+                            <select class="form-select" formControlName="ville"> Ville
+                                <option>Ville</option>
+                                <option *ngFor="let v of ville">{{v}}</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Rue</label>
+                            <input type="text" formControlName="rue" class="form-control" placeholder="Rue">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Coordonnées Gps</label>
+                            <div class="d-flex">
+                                <input type="text" formControlName="coordonnes" [(ngModel)]="position"
+                                    class="form-control" placeholder="10.0056,33.3655">
+                                <button class="btn " (click)="getLocation()"><img src="../../assets/Location.svg"
+                                        width="30px"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Capacité</label>
+                        <input type="number" formControlName="capacite" class="form-control" placeholder="Capacite">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tarif</label>
+                        <input type="text" formControlName="Tarif" class="form-control" placeholder="Tarif">
+                    </div>
+                    <div class="input-group mb-1">
+                        <input type="file" class="form-control" (change)="change($event)" id="inputGroupFile02" multiple
+                            style="visibility:hidden;">
+                        <label class="input-group-text w-100" for="inputGroupFile02">
+                            Ajouter des image de votre stade en cliquant ici :
+                            <i class="bi bi-cloud-upload fs-4 ms-2 text-primary"></i></label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary" (click)="ajoutStade()"  data-bs-dismiss="modal">Ajouter</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal update -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modifier Stade</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="container" [formGroup]="StadeUpdateForm">
+                    <div class="mb-3">
+                        <label class="form-label">Nom de stade</label>
+                        <input type="text" class="form-control" formControlName="nom" placeholder="Nom">
+                    </div>
+                    <div class="form-control">
+                        <div class="text-center">Adresse</div>
+                        <div class="mb-3">
+                            <select class="form-select" formControlName="ville"> Ville
+                                <option>Ville</option>
+                                <option *ngFor="let v of ville">{{v}}</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Rue</label>
+                            <input type="text" formControlName="rue" class="form-control" placeholder="Rue">
+                        </div>
+                       
+                        <div class="mb-3">
+                            <label class="form-label">Coordonnées Gps</label>
+                            <div class="d-flex">
+                                <input type="text" formControlName="coordonnes" [(ngModel)]="position"
+                                    class="form-control" placeholder="10.0056,33.3655">
+                                <button class="btn " (click)="getLocation()"><img src="../../assets/Location.svg"width="30px">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Capacité</label>
+                        <input type="number" formControlName="capacite" class="form-control" placeholder="Capacite">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tarif</label>
+                        <input type="text" formControlName="Tarif" class="form-control" placeholder="Tarif">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary" (click)="UpdateStade()" data-bs-dismiss="modal">Modifier</button>
+            </div>
+        </div>
+    </div>
+</div>

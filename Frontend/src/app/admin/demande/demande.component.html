@@ -1,0 +1,27 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Cordonnes Gps</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of demandes">
+        <th scope="row">{{d.nom}}</th>
+        <td>{{d.coordonnes.long}},{{d.coordonnes.lat}}</td>
+        <td>{{d.adresse.ville}} {{d.adresse.rue}}</td>
+        <td>
+            <button class="btn btn-success mx-2" type="button"  (click)="accepterDemande(d._id)" ><strong>accepter</strong></button>
+            <button class="btn btn-danger mx-2" type="button"  (click)="refuserDemande(d._id)" ><strong>refuser</strong></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="demandes.length==0" >
+
+    <div class="text-center" >
+      <h1>Il n'y a pas aucun demande d'ajoute de stade</h1>
+    </div>
+  </div>

@@ -1,0 +1,22 @@
+<table class="table  table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nom et Prénom</th>
+        <th scope="col">Role</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of utilisateurs">
+        <th scope="row">{{u.nom}} {{u.prenom}}</th>
+        <td>{{u.role}}</td>
+        <td>
+          <div class="form-check form-switch">
+            <input class="form-check-input fs-5" type="checkbox" (change)="change($event,u._id)" [checked]="u.etatDeCompte||false"  id="flexSwitchCheckDefault">
+          </div>
+          <!-- <button class="btn btn-success btn-sm" style="width: 80px;" type="button" *ngIf="!u.etatDeCompte"  (click)="activerCompte(u._id)" ><strong>Activer</strong></button>
+          <button class="btn btn-danger btn-sm" style="width: 80px;" type="button" *ngIf="u.etatDeCompte"  (click)="desactiverCompte(u._id)" ><strong>Désactiver</strong></button> -->
+        </td>
+      </tr>
+    </tbody>
+  </table>

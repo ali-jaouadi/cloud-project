@@ -1,0 +1,96 @@
+
+  .Footer{
+    background: linear-gradient(69.8deg, rgb(25, 49, 108) 2.8%, rgb(1, 179, 201) 97.8%);
+    
+  }
+  .container{
+    margin-left: 40%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  
+  
+  .legal__link {
+    color: #d4d4d4;
+  }
+  
+  
+  
+ 
+  
+  
+  
+  
+  /*new social media icon*/
+  
+  
+  
+  .social-links a {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.05);
+     margin: 0 30px; 
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s;
+    margin: 0px 10px;
+  }
+  
+  .social-links a .fab {
+    font-size: 20px;
+    line-height: 62px;
+    transform: translate(0px, -11px);
+    position: relative;
+    z-index: 10;
+    transition: color 0.5s;
+    color: white;
+  
+  }
+  
+  
+  
+  .social-links a:hover .fab {
+    color: #e0de3f;
+  }
+  
+  .social-links a:hover {
+    transform: translateY(-10px);
+  }
+  
+  
+  @media screen and (max-width:600px) {
+    .contnu {
+      flex-direction: column;
+      margin: 0% 4% 0% -4%;
+    }
+  
+    .disc {
+      margin: 10% 0% -7% 9%;
+      width: 84%;
+    }
+    .legal{
+      padding: 2% 3% 0% 2%;
+    }
+  
+    .liens {
+      margin: 6% 0% 6% -46%;
+    }
+  
+    .contact {
+      width: 70%;
+      transform: translate(-19px, 0px);
+    }
+  
+    .container-top {
+      margin: -10% 0% 0% 0%;
+    }
+    .social-links{
+      margin: 0% 0% 0% 0%;
+    }
+  }

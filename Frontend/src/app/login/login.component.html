@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-4">
+        <form class="container"(ngSubmit)="submit()" [formGroup]="playerLoginForm" >
+            <img src="../../assets/AvatarPlayer.png" width=150px; class="avatar">
+            <h1 class="text-center">Bienvenue</h1>
+            <div class="c">
+            <div class="mb-3 " >
+          <input type="text"  placeholder="Email" class="form-control form-control-lg" [ngClass]="{ 'is-invalid': submitted && playerLoginForm.controls['email'].errors }" formControlName="email" >
+          <div *ngIf="submitted && playerLoginForm.controls['email'].errors" class="invalid-feedback">
+            <div *ngIf="playerLoginForm.controls['email'].errors['required']">Email Adress is required</div>
+            <div *ngIf="playerLoginForm.controls['email'].errors && !playerLoginForm.controls['email'].errors['required']">Please enter a valide e-mail adress</div>
+        </div>
+            </div>
+            <div class="mb-3 ">
+              <input type="password" placeholder="Mot de passe" class="form-control form-control-lg" [ngClass]="{ 'is-invalid': submitted && playerLoginForm.controls['password'].errors }" formControlName="password" >
+              <div *ngIf="submitted && playerLoginForm.controls['password'].errors" class="invalid-feedback">
+                <div *ngIf="playerLoginForm.controls['password'].errors['required']">Password is required</div>
+                <div *ngIf="playerLoginForm.controls['password'].errors['minlength']">Password must be at least 6 characters</div>
+            </div>
+            </div>
+          </div>
+          <div class="form-text text-danger" >{{erreur}}</div>
+            <div class="mb-3 position-relative">
+              <a class="position-absolute top-0 end-0" [routerLink]="['/forgot-password']" >Mot de passe oublié?</a>
+            </div>
+            <div class="mb-3 d-grid gap-2 mt-5">
+                <button class="btn btn-lg" type="submit" ><strong>Se connecter</strong></button>
+            </div>
+        </form>
+        <h4 class="text-center mb-3 fs-4">Vous n'avez pas un compte? <a [routerLink]="['/register']">S'inscrire</a></h4> 
+        <h6 class="text-center fs-6">Vous êtes un proprietaire de stade ? <a [routerLink]="['/proprietaire/register']">Cliquer ici</a></h6> 
+    </div>
+</div>
+<!-- 
+<div class="position-fixed top-0 end-0 mt-5 p-5" >
+<div class="toast fade show align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="100">
+  <div class="d-flex">
+    <div class="toast-body">
+      {{erreur}}
+    </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+</div>
+</div> -->

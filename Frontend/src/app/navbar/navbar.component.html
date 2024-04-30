@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand " [routerLink]="['/stades']">TAKOUIRA</a>
+    <!--ms-auto-->
+    <button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false"  aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav " >
+        <li class="navItems py-2" routerLinkActive="active" ><a [routerLink]="['/stades']">Stades</a></li>
+        <li class="navItems py-2" routerLinkActive="active" *ngIf="loggedin&&role=='proprietaire'"><a [routerLink]="['/proprietaire/reservations']">Reservations</a></li>
+        <li class="navItems py-2" routerLinkActive="active" *ngIf="loggedin&&role=='admin'"><a [routerLink]="['/admin']">Dashboard</a></li>
+        <li class="navItems py-2" routerLinkActive="active" *ngIf="loggedin"><a [routerLink]="['/profile']">Profil</a></li>
+        <li class="navItems py-2" routerLinkActive="active" ><a [routerLink]="['/maps']">Maps</a></li>
+      </ul>
+      <ul class="navbar-nav btns" *ngIf="!loggedin">
+        <li><a class="btnSignin " [routerLink]="['/login']">Se connecter</a></li>
+        <li><a class="btnSignup " [routerLink]="['/register']">Créer un compte</a></li>
+      </ul>
+      <ul class="navbar-nav btns " *ngIf="loggedin">
+        <li><a class="btnSignOut btn btn-outline-light" (click)="logout()">Se déconnecter</a></li>
+      </ul>
+    </div>
+    <!-- <ul class="nav ms-auto my-0" *ngIf="loggedin">
+      <li class="dropdown">
+        <a class="nav-link position-relative p-0 m-0" type="button" id="dropdownMenuMessage" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <i class="bi bi-bell"></i>
+          <small><span class="position-absolute translate-middle badge rounded-pill bg-danger">8</span></small>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuMessage">
+          <span class="dropdown-header text-center p-1">Notifications</span>
+
+          <li>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['/Notification/5']">
+              <div class="media">
+                <img src="https://github.com/ColorlibHQ/AdminLTE/blob/master/docs/assets/img/user1-128x128.jpg?raw=true"
+                  class="image " alt="">
+                <div class="media-body">
+                  <div class="dropdown-item-title">Maghrebi Lassad
+                    <span><i class="bi bi-check-circle" style="color: rgb(4, 29, 255);"></i></span>
+                  </div>
+                  <p class="d-inline-block text-truncate" style="max-width: 200px;margin:0px;font-size: 0.8rem;">Lorem
+                    ipsum dolor sit, amet consectetur adipisicing elit. Illo, quasi fugit quae odio autem dolorem eius
+                    fugiat! Voluptatum</p>
+                  <p class="text-muted" style="max-width: 200px;margin:0px;font-size: 0.8rem;"><i
+                      class="bi bi-clock text-muted"></i> 15 Hours Ago</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item dropdown-footer text-center" [routerLink]="['/Notifications']">See All
+            Notifications</a>
+        </ul>
+      </li>
+    </ul> -->
+</nav>

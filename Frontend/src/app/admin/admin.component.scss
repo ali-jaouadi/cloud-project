@@ -1,0 +1,21 @@
+.sidebar a {
+    display: block;
+    padding: 16px;
+    text-decoration: none;
+  }
+.row{
+  margin: 0px;
+  padding: 0px;
+}
+@media screen and(min-width:768px) {
+      .sidebar {
+        position: sticky;
+        height: 100vh;
+      }
+}
+
+@media screen and (max-width: 767.9px) {
+    .sidebar{padding: 0px;}
+    .sidebar a {float: left;width: 25%;}
+    .nav-link{border-inline: 1px solid;}
+}

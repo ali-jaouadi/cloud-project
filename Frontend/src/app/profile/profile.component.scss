@@ -1,0 +1,24 @@
+  .row{
+    margin: 0px;
+  }
+  .upload{
+font: 0.8em sans-serif;
+  }
+.fileinput {
+    visibility:hidden;
+    width: 0px;
+  }
+  img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.col-md-6{
+  background-color: #9BB7D4;
+
+}
+@media(min-width: 768px) {
+  .col-md-6:first-child{
+    border-right: 5px solid white;
+  }
+}

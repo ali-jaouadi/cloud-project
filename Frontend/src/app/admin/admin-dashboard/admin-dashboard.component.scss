@@ -1,0 +1,19 @@
+@media (max-width: 1200px) {
+    #areaChart {
+        max-height: 400px;
+      }
+      .chart2 {
+        max-width: 75%;
+        margin: auto;
+    }
+}
+@media (min-width: 1200px) {
+    #areaChart {
+        
+      }
+      .chart2 {
+        max-width: 30%;
+        margin: auto;
+    }
+}
+
