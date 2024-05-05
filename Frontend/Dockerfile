@@ -8,7 +8,7 @@ WORKDIR /opt/frontend
 
 
 
-COPY Frontend/ . 
+COPY ../Frontend/ . 
 RUN npm install
 
 RUN npm install
