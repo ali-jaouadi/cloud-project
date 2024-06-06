@@ -7,7 +7,7 @@ WORKDIR /opt/app
 
 
 
-COPY Backend/ . 
+COPY . . 
 RUN npm install
 
 RUN npm install
