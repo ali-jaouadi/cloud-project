@@ -75,8 +75,8 @@ As the first step to dockerize the  application, we write the Dockerfile to buil
 - Specify the working directory.
 - Copy all files into this directory.
 - Run the npm command.
-— Allocate access to the port (3000 for the backend and 4200 for the frontend).
-— Finally, start the application.
+- Allocate access to the port (3000 for the backend and 4200 for the frontend).
+- Finally, start the application.
 please have a look at the dockerfile of [frontend](https://github.com/ali-jaouadi/cloud-project/blob/main/Frontend/Dockerfile) and [backend](https://github.com/ali-jaouadi/cloud-project/blob/main/Backend/Dockerfile) 
 With docker-compose, each container will run as a standalone application and can communicate with other containers on the same host, as shown in the figure 
 
