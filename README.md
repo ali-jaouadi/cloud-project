@@ -9,9 +9,9 @@ Project cycle times, delivery dates, and code quality are important factors for 
 
 Our primary objective for this project was to adopt a DevOps culture by applying the best practices of this new software development approach to  projects.This new approach, which seeks to accelerate and automate the various stages of the software lifecycle to ensure software quality and thus increase end-user satisfaction. Additionally, we aim to achieve a better version of the  project by implementing a deployment system. This project encompasses three major areas:
 
-— Continuous Integration.
-— Continuous Deployment.
-— Notification and Reporting.
+- Continuous Integration.
+- Continuous Deployment.
+- Notification and Reporting.
 
 ### Presentation of tools 
 
@@ -28,11 +28,11 @@ Git is an open-source version control system. Essentially, it is a tool that all
 
 Jenkins is an open-source continuous integration server based on Java that interfaces with version control systems to execute projects. It is capable of:
 
-— Creating new builds.
-— Verifying the proper functioning of the obtained results.
-— Automating the evolution process to improve productivity.
-— Controlling the execution of tasks and scripts.
-— Serving as a dashboard to manage your various automations.
+- Creating new builds.
+- Verifying the proper functioning of the obtained results.
+- Automating the evolution process to improve productivity.
+- Controlling the execution of tasks and scripts.
+- Serving as a dashboard to manage your various automations.
 <div style="text-align: center;">
 <img src="/pictures/janjoun.png" alt="Description" width="300" height="200">
 </div>
@@ -42,12 +42,12 @@ Jenkins is an open-source continuous integration server based on Java that inter
 Docker is an opensource software that easily allows you to:
 
 Package an application and its dependencies into an isolated container.
-— Run on any server. To understand Docker's internal components, we need to understand the following concepts:
-— A Docker image represents the file system, without the processes. It contains everything (Java, a database, a script you will launch, etc. . .).
-— Images are created from configuration files named "Dockerfile".
-— Dockerfiles are files that allow us to build a Docker tailored to our needs, step by step.
-— A container is the execution of an image: it has a copy of the image's file system, as well as the ability to run processes.
-— In this container, you can therefore interact with the applications installed in the image, run scripts, and run a server, etc.
+- Run on any server. To understand Docker's internal components, we need to understand the following concepts:
+- A Docker image represents the file system, without the processes. It contains everything (Java, a database, a script you will launch, etc. . .).
+- Images are created from configuration files named "Dockerfile".
+- Dockerfiles are files that allow us to build a Docker tailored to our needs, step by step.
+- A container is the execution of an image: it has a copy of the image's file system, as well as the ability to run processes.
+- In this container, you can therefore interact with the applications installed in the image, run scripts, and run a server, etc.
 <div style="text-align: center;">
 <img src="/pictures/dakdouk.png" alt="Description" width="300" height="200">
 </div>
@@ -65,16 +65,16 @@ Using SonarCloud instead of hosting SonarQube locally or in a container provides
 ##### dockercompose
   In order to test the project, Docker Compose allows running multiple containers as separate services, facilitating integration testing and ensuring seamless communication between components.
   In our project, we have a complete application that includes MongoDB, Angular, and NodeJS. MongoDB handles the backend database, and Nodejs are for server-side rendering, and Angular is for the frontend. Since there are three components, we need to run containers for each of them. We need to run the containers as follows:
-— Container 1 — Angular
-— Container 2 — NodeJS 
-— Container 3 — MongoDB
+- Container 1 — Angular
+- Container 2 — NodeJS 
+- Container 3 — MongoDB
 
 
 As the first step to dockerize the  application, we write the Dockerfile to build each of the components.
-— Choose the base image.
-— Specify the working directory.
-— Copy all files into this directory.
-— Run the npm command.
+- Choose the base image.
+- Specify the working directory.
+- Copy all files into this directory.
+- Run the npm command.
 — Allocate access to the port (3000 for the backend and 4200 for the frontend).
 — Finally, start the application.
 please have a look at the dockerfile of [frontend](https://github.com/ali-jaouadi/cloud-project/blob/main/Frontend/Dockerfile) and [backend](https://github.com/ali-jaouadi/cloud-project/blob/main/Backend/Dockerfile) 
