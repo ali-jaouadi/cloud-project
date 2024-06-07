@@ -6,8 +6,8 @@
 
 const mongoose = require('mongoose');
 require('dotenv').config();
-mongoose.set('strictQuery', false); // Load environment variables from .env file
-
+mongoose.set('strictQuery', false); 
+// Load environment variables from .env fil
 const mongoURI = process.env.MONGODB_URI;
 
 // Connect to MongoDB
