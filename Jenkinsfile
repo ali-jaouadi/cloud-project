@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-      
+        // setting the invirmont varaiables for the docker hub credential
         DOCKERHUB_CREDENTIALS = credentials('docker-hub')
         DOCKER_IMAGE_NAME1 = 'alijaouadi120235/angular-img'
         DOCKER_IMAGE_NAME2 = 'alijaouadi120235/nodejs-img'
@@ -10,6 +10,7 @@ pipeline {
     }
     
     stages {
+        // this stage for pulling the code from github repository and verifying wether the docker images exist or not
         stage('Checkout') {
             steps {
                 // Checkout the repository
@@ -40,6 +41,7 @@ pipeline {
                 }                
             }
         }
+        // this stage is for installing dependecies for both sides
                 stage('Install Dependencies') {
             steps {
                 dir('Frontend') { 
@@ -50,7 +52,7 @@ pipeline {
                 }                
             }
         }
-
+        // stage for runing the sonarqube analysis
         stage('Run Sonar') {
             steps {
                 dir('Frontend') {
@@ -61,7 +63,7 @@ pipeline {
                 }                
             }
         }
-        
+        // stage to build the docker images 
         stage('Build Docker Image for frontend') {
             steps {
               
@@ -131,6 +133,7 @@ pipeline {
 
 
    }
+    // the post section will trigger the stages result and carry out one of the following conditions
        post {
         success {
             echo 'Build and tests succeeded!'
