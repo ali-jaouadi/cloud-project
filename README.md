@@ -1,6 +1,6 @@
 ### Overview of the application
 
-Our web application offers a seamless platform for football stadium reservations, combining the power of Angular and Node.js. Users can effortlessly create accounts, search for available stadiums, and book reservations. This streamlined process ensures a hassle-free experience for football enthusiasts and stadium managers alike
+Our web application offers a seamless platform for football stadium reservations, combining the power of Angular and Node.js. Users can effortlessly create accounts, search for available stadiums, and book reservations. This streamlined process ensures a hassle-free experience for football enthusiasts and stadium managers alike 
 
 ### Problem Statement
 Project cycle times, delivery dates, and code quality are important factors for every company. In some companies, there are difficulties in team management, particularly in the relationship between application development teams (Dev) and IT operations teams (Ops). The primary objective of the administration team is to ensure system stability. The best way to achieve this is by strictly controlling the quality of changes made to the systems they maintain. On the other hand, the development team aims to implement necessary changes at the lowest cost and as quickly as possible. As a result, this separation of tasks between the two types of teams has quickly led to ongoing conflict due to the incompatibility of their respective objectives. This can be illustrated by considering the three constraints of project management: cost, quality, and time
