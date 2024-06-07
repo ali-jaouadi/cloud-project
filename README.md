@@ -17,11 +17,11 @@ Our primary objective for this project was to adopt a DevOps culture by applying
 
 For the setup of different environments and the configuration of CI/CD, we will describe each tool utilized and used in our solution.
 
-##### 1) Git
+##### 1) Github
 
-Git is an open-source version control system. Essentially, it is a tool that allows you to track all the files in your project. Each file modification is detected by Git and versioned into a snapshot. A modification history is available for the project, enabling you to review and even revert changes.
+GitHub hosts Git repositories and provides collaboration tools like pull requests and issues for efficient team coding. It fosters community engagement through open-source contributions and developer networking.
 <div style="text-align: center;">
-<img src="/pictures/gitgot.png" alt="Description" width="300" height="100">
+<img src="/pictures/github.png" alt="Description" width="400" height="200">
 </div>
 
 ##### 2) Jenkins
